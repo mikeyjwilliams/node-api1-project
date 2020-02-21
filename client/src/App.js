@@ -9,11 +9,9 @@ function App() {
   console.log();
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/users')
+      .get('https://node-api1-project-mw.herokuapp.com/api/users')
       .then(user => {
         setUsers(user.data);
-        console.log(user);
-        console.log('R', user.data);
       })
       .catch(err => {
         console.log(err);
