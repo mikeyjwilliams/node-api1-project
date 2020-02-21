@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const db = require('./data/db');
 
 const server = express();
 
 server.use(express.json());
+server.use(cors());
 
 server.get('/', (req, res) => {
   res.send('users is up');
@@ -129,6 +131,10 @@ server.put('/api/users/:id', async (req, res) => {
       .status(500)
       .json({ errorMessage: 'The User information could not be modified.' });
   }
+});
+
+server.use((req, res) => {
+  res.status(404).json({ message: '404 page not found fail whale :(' });
 });
 
 module.exports = server;
